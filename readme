@@ -1,0 +1,28 @@
+working audio in zip file
+compile cmd
+gcc -o videoplayer videoplayer.c -lswresample -lavformat -lavcodec -lswscale -lavutil -lSDL -lz -lm
+
+Use libswresampler in gcc: -D\_\_RESAMPLER\_\_ -D\_\_LIBAVRESAMPLE\_\_
+
+videoplayer.c 
+works just fine
+check #start of islem patch
+
+SDL: 
+https://stackoverflow.com/questions/10772875/how-to-build-sdl-libraries-for-android
+SDL error:
+include <SDL/SDL.h>
+include <SDL/...>
+
+Android.mk
+
+LOCAL_PATH:= $(call my-dir)
+
+include $(CLEAR_VARS)
+LOCAL_SRC_FILES:= main.c
+LOCAL_CFLAGS := -D__RESAMPLER__ -D__LIBSWRESAMPLE__ 
+LOCAL_LDLIBS := -lz -lm
+LOCAL_MODULE := vidplayer
+LOCAL_SHARED_LIBRARIES := libswresample libavformat libavcodec libswscale libavutil SDL2
+
+include $(BUILD_EXECUTABLE)
