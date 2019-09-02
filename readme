@@ -21,6 +21,7 @@ LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES:= main.c
 LOCAL_CFLAGS := -D__RESAMPLER__ -D__LIBSWRESAMPLE__ 
+LOCAL_CFLAGS := -lz -lm
 LOCAL_LDLIBS := -lz -lm
 LOCAL_MODULE := vidplayer
 LOCAL_SHARED_LIBRARIES := libswresample libavformat libavcodec libswscale libavutil SDL2
